@@ -20,7 +20,7 @@ defmodule Exvk.Mixfile do
   # { :foobar, "~> 0.1", git: "https://github.com/elixir-lang/foobar.git" }
   defp deps do
     [
-     { :httpotion, github: "myfreeweb/httpotion" },
+     { :httpotion, github: "couchemar/httpotion" },
      { :exreloader, github: "couchemar/exreloader" },
      { :jsex, github: "talentdeficit/jsex" }
     ]

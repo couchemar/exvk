@@ -1,6 +1,6 @@
 [ "exreloader": {:git, "git://github.com/couchemar/exreloader.git", "073147f0944941b072ce8ece8b6ff0f9ff035a34", []},
   "genx": {:git, "git://github.com/yrashk/genx.git", "1b857fa422a47269d5f151ecababd83f4835527d", []},
-  "httpotion": {:git, "git://github.com/myfreeweb/httpotion.git", "9f4539f966324b4397bc7f7dc49ca92eb48da20d", []},
+  "httpotion": {:git, "git://github.com/couchemar/httpotion.git", "4083be859465395633f5e49accf6c97ac8356bf4", []},
   "ibrowse": {:git, "git://github.com/cmullaparthi/ibrowse.git", "866b0ff5aca229f1ef53653eabc8ed1720c13cd6", []},
   "jsex": {:git, "git://github.com/talentdeficit/jsex.git", "95492e9a4f418c10ff1c74d669d89ca5e8ac4d67", []},
   "jsx": {:git, "git://github.com/talentdeficit/jsx.git", "e50af6e109cb03bd26acf715cbc77de746507d1d", [{:tag, "v1.4.3"}]} ]
