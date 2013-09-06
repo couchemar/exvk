@@ -35,10 +35,10 @@ defmodule Exvk.VK.Users do
     parsed = URI.parse(method)
     body = get(to_string(parsed.query(URI.encode_query(query)))).body["response"]
     lc el inlist body do
-      el = ListDict.put(el, "first_name",
-                   :unicode.characters_to_binary(el["first_name"], :utf8, :latin1))
-      ListDict.put(el, "last_name",
-                   :unicode.characters_to_binary(el["last_name"], :utf8, :latin1))
+      el |> ListDict.put("first_name",
+                         :unicode.characters_to_binary(el["first_name"], :utf8, :latin1))
+      |> ListDict.put("last_name",
+                      :unicode.characters_to_binary(el["last_name"], :utf8, :latin1))
     end
   end
 end
@@ -56,10 +56,10 @@ defmodule Exvk.VK.Messages do
   end
 
   def api_get_history(query // []) do
+    query = ListDict.put(query, :v, 5.0)
     method = "getHistory"
     parsed = URI.parse(method)
     body = get(to_string(parsed.query(URI.encode_query(query)))).body["response"]
-
     items = body["items"]
 
     items = lc item inlist items do
