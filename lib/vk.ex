@@ -46,6 +46,8 @@ end
 defmodule Exvk.VK.Messages do
   use HTTPotion.Base
 
+  @defaults [v: 5.0]
+
   def process_url(url) do
     "https://api.vk.com/method/messages." <> url
   end
@@ -55,8 +57,11 @@ defmodule Exvk.VK.Messages do
     body
   end
 
-  def api_get_history(query // []) do
-    query = ListDict.put(query, :v, 5.0)
+  def api_get_history(access_token, user_id, query // []) do
+    query = query
+    |> Dict.merge(@defaults)
+    |> Dict.put(:access_token, access_token)
+    |> Dict.put(:user_id, user_id)
     method = "getHistory"
     parsed = URI.parse(method)
     body = get(to_string(parsed.query(URI.encode_query(query)))).body["response"]
