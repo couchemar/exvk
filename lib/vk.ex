@@ -120,4 +120,22 @@ defmodule Exvk.VK.Messages do
     api_get(access_token, [filters: 1])
   end
 
+  def api_get_long_poll_server(access_token, query // []) do
+    query = query
+    |> Dict.merge(Exvk.VK.Defaults.get)
+    |> Dict.put(:access_token, access_token)
+    parsed = URI.parse("getLongPollServer")
+    get(to_string(parsed.query(URI.encode_query(query)))).body["response"]
+  end
+
+end
+
+defmodule Exvk.VK.LongPoll do
+  def get(server, key, ts, mode // 2, wait // 25) do
+    query = ListDict.new(act: "a_check", key: key, ts: ts, mode: mode, wait: wait)
+    parsed = URI.parse(server)
+    {:ok, body} = JSEX.decode HTTPotion.get(to_string(parsed.query(URI.encode_query(query))), [], [timeout: :infinity]).body
+    body
+  end
+
 end
