@@ -6,13 +6,11 @@ defmodule Exvk.Supervisor do
   end
 
   def init([]) do
+    {:ok, :config} = :dets.open_file(:config, file: "config.dets")
+    res = :dets.lookup(:config, :access_token)
     children = [
-      # Define workers and child supervisors to be supervised
-      # worker(Exvk.Worker, [])
+      supervisor(Exvk.LongPoller.Supervisor, [res[:access_token]])
     ]
-
-    # See http://elixir-lang.org/docs/stable/Supervisor.Behaviour.html
-    # for other strategies and supported options
     supervise(children, strategy: :one_for_one)
   end
 end

@@ -137,5 +137,4 @@ defmodule Exvk.VK.LongPoll do
     {:ok, body} = JSEX.decode HTTPotion.get(to_string(parsed.query(URI.encode_query(query))), [], [timeout: :infinity]).body
     body
   end
-
 end

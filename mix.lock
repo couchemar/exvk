@@ -1,6 +1,10 @@
-[ "exreloader": {:git, "git://github.com/couchemar/exreloader.git", "073147f0944941b072ce8ece8b6ff0f9ff035a34", []},
+[ "exactor": {:git, "git://github.com/sasa1977/exactor.git", "a380468012191158d768ada6c604eb0bd2f6610c", []},
+  "exlager": {:git, "git://github.com/michalwski/exlager.git", "6a07ecc94b93b15c3da097268a312fc50afa46ba", []},
+  "exreloader": {:git, "git://github.com/couchemar/exreloader.git", "073147f0944941b072ce8ece8b6ff0f9ff035a34", []},
   "genx": {:git, "git://github.com/yrashk/genx.git", "1b857fa422a47269d5f151ecababd83f4835527d", []},
+  "goldrush": {:git, "git://github.com/DeadZen/goldrush.git", "879c69874a555b2c13498aa4a3da6f6bbbb6a031", [{:tag, "879c69874a"}]},
   "httpotion": {:git, "git://github.com/couchemar/httpotion.git", "4083be859465395633f5e49accf6c97ac8356bf4", []},
   "ibrowse": {:git, "git://github.com/cmullaparthi/ibrowse.git", "866b0ff5aca229f1ef53653eabc8ed1720c13cd6", []},
   "jsex": {:git, "git://github.com/talentdeficit/jsex.git", "95492e9a4f418c10ff1c74d669d89ca5e8ac4d67", []},
-  "jsx": {:git, "git://github.com/talentdeficit/jsx.git", "e50af6e109cb03bd26acf715cbc77de746507d1d", [{:tag, "v1.4.3"}]} ]
+  "jsx": {:git, "git://github.com/talentdeficit/jsx.git", "e50af6e109cb03bd26acf715cbc77de746507d1d", [{:tag, "v1.4.3"}]},
+  "lager": {:git, "https://github.com/basho/lager.git", "2965c23f46301afeb7d62f6fbac99b3ab367f6b2", []} ]
