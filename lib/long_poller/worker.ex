@@ -1,9 +1,10 @@
 defmodule Exvk.LongPoller.Worker do
-  use ExActor, export: :singleton
+  use ExActor, export: :lpw
 
   definit access_token do
     resp = Exvk.VK.Messages.api_get_long_poll_server access_token
     fetch(resp["server"], resp["key"], resp["ts"])
+    :ok
   end
 
   defcast fetch(server, key, ts) do

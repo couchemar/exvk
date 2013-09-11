@@ -9,7 +9,8 @@ defmodule Exvk.Supervisor do
     {:ok, :config} = :dets.open_file(:config, file: "config.dets")
     res = :dets.lookup(:config, :access_token)
     children = [
-      supervisor(Exvk.LongPoller.Supervisor, [res[:access_token]])
+      supervisor(Exvk.LongPoller.Supervisor, [res[:access_token]]),
+      supervisor(Exvk.UI.Supervisor, [])
     ]
     supervise(children, strategy: :one_for_one)
   end
