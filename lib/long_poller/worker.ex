@@ -14,5 +14,4 @@ defmodule Exvk.LongPoller.Worker do
     fetch(server, key, resp["ts"] || ts)
     :ok
   end
-
 end
