@@ -1,12 +1,10 @@
 defmodule Exvk.UI.Worker do
   use ExActor, export: :ui
 
-  alias :wx, as: WX
-
-  defrecord :wx, Record.extract(:wx, from_lib: "wx/include/wx.hrl")
+  defrecord WX, Record.extract(:wx, from_lib: "wx/include/wx.hrl")
 
   definit do
-    wx = WX.new()
+    wx = :wx.new()
     xrc = :wxXmlResource.get()
     :ok = :wxXmlResource.initAllHandlers(xrc)
     true = :wxXmlResource.load(xrc, 'gui/exvk.xrc')
@@ -23,17 +21,22 @@ defmodule Exvk.UI.Worker do
     :wxFrame.connect(state, :command_menu_selected)
   end
 
+  definfo {:wx, _, _, _, _} = msg do
+    :error_logger.info_msg "Got event: #{inspect msg}"
+    [_|tail] = :erlang.tuple_to_list(msg)
+    process_ui_event(:erlang.list_to_tuple([WX|tail]))
+  end
+
+  definfo msg do
+    :error_logger.info_msg "Got unhandled msg: #{inspect msg}"
+    :ok
+  end
+
   @menu_exit 101
-  definfo :wx[id: @menu_exit, obj: frame] do
+  def process_ui_event WX[id: @menu_exit, obj: frame] do
     :error_logger.info_msg "Exit pressed"
     :error_logger.info_msg "Frame: #{inspect frame}"
     :wxFrame.close(frame)
     :ok
   end
-
-  definfo :wx[] = msg do
-    :error_logger.info_msg "Got unhandled msg: #{inspect msg}"
-    :ok
-  end
-
 end
