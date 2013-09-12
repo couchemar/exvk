@@ -37,6 +37,7 @@ defmodule Exvk.UI.Worker do
     :error_logger.info_msg "Exit pressed"
     :error_logger.info_msg "Frame: #{inspect frame}"
     :wxFrame.close(frame)
+    :application.stop(:exvk)
     :ok
   end
 end
