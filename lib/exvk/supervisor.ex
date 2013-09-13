@@ -10,7 +10,7 @@ defmodule Exvk.Supervisor do
     res = :dets.lookup(:config, :access_token)
     children = [
       supervisor(Exvk.LongPoller.Supervisor, [res[:access_token]]),
-      supervisor(Exvk.UI.Supervisor, [])
+      supervisor(Exvk.UI.Supervisor, [res[:access_token]])
     ]
     supervise(children, strategy: :one_for_one)
   end

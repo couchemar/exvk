@@ -9,7 +9,7 @@ defmodule Exvk.LongPoller.Worker do
 
   defcast fetch(server, key, ts) do
     :error_logger.info_msg "Fetching (#{server}, #{key}, #{ts})"
-    ts_new = Exvk.VK.LongPoll.get(server, key, ts) |> process_resp
+    ts_new = Exvk.VK.LongPoll.get(server, key, ts, 2, 60 * 60) |> process_resp
     fetch(server, key, ts_new || ts)
     :ok
   end
